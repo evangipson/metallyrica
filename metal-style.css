@@ -1,0 +1,50 @@
+html, body {
+    background: #111;
+}
+.intro, .lyrics, p {
+    text-align: center;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.6rem;
+    color: #ddd;
+}
+a {
+    color: #ddd;
+}
+a:visited {
+    color: #bbb;
+}
+p, .intro h2 {
+    font-family: 'Roboto', sans-serif;
+}
+.chorus, .intro h1, .band, .title, .album {
+    font-family: 'Metal Mania', cursive;
+}
+.band .name {
+    font-family: "Eater", cursive;
+    letter-spacing: -0.35rem;
+}
+.chorus {
+    font-size: 1.5rem;
+}
+.title {
+    font-size: 3rem;
+    line-height: 3.6rem;
+    margin-top: 2rem;
+}
+.band, .album {
+    font-size: 2.2rem;
+    line-height: 2.8rem;
+}
+#lyrics {
+    margin-top: 2rem;
+}
+.intro h1 {
+    margin-top: 2rem;
+    font-size: 4rem;
+    line-height: 4.6rem;
+}
+.intro h2 {
+    font-weight: 300;
+    margin-top: -3rem;
+}
