@@ -192,7 +192,6 @@ var metalVerbs = [
     "hate",
     "betray",
     "boil",
-    "fire",
     "bludgeon",
     "behead",
     "rot",
@@ -238,7 +237,6 @@ var metalNouns = [
     "hell",
     "remains",
     "ash",
-    "heaven",
     "maniac",
     "flame",
     "spirit",
@@ -264,7 +262,6 @@ var metalNouns = [
     "massacre",
     "reaper",
     "unknown",
-    "scorpion",
     "axe",
     "serpent",
     "angel",
@@ -369,6 +366,7 @@ var metalAdjectives = [
     "infernal",
     "grotesque",
 ];
+var lyricStructures = [];
 
 /** The maximum is exclusive and the minimum is inclusive.
  * Example: getRandomInt(1,4): min 1, max 3 */
@@ -421,59 +419,30 @@ function getBandName() {
 /**
  * Will generate a lyric. */
 function createLyric() {
-    var lyric = "";
-    var sentenceRoll = getRandomInt(0, 16);
-    switch (sentenceRoll) {
-        case 0:
-            lyric = pick(metalVerbs).ing() + " " + pick(metalNouns) + " that " + pick(metalVerbs).plural();
-            break;
-        case 1:
-            lyric = pick(metalAdjectives) + " " + pick(metalNouns).plural() + " that " + pick(metalVerbs) + " the " + pick(metalNouns);
-            break;
-        case 2:
-            lyric = pick(metalNouns).plural() + " become " + pick(metalAdjectives) + " in " + pick(metalMisc);
-            break;
-        case 3:
-            lyric = pick(metalNouns).plural() + " " + pick(metalVerbs).ing() + " " + pick(metalNouns).plural();
-            break;
-        case 4:
-            lyric = pick(metalVerbs).ing() + " the " + pick(metalNouns);
-            break;
-        case 5:
-            lyric = "the " + pick(metalMiscPrefixes) + " " + pick(metalMisc) + " will " + pick(metalVerbs) + " " + pick(metalNouns).plural();
-            break;
-        case 6:
-            lyric = pick(metalAdjectives) + " " + pick(metalNouns) + " " + pick(metalVerbs).plural();
-            break;
-        case 7:
-            lyric = "the " + pick(metalAdjectives) + " " + pick(metalNouns).plural() + " that "  +  pick(metalVerbs).plural();
-            break;
-        case 8:
-            lyric = pick(metalNouns) + " will " + pick(metalVerbs) + " " + pick(metalNouns).plural();
-            break;
-        case 9:
-            lyric = pick(metalAdjectives) + " " + pick(metalNouns).plural() + " will " + pick(metalVerbs) + " the " + pick(metalNouns);
-            break;
-        case 11:
-            lyric = pick(metalNouns) + " " + pick(metalVerbs).plural();
-            break;
-        case 12:
-            lyric = "the " + pick(metalNouns) + " will " + pick(metalVerbs) + " the " + pick(metalNouns);
-            break;
-        case 13:
-            lyric = "the " + pick(metalMiscPrefixes) + " " + pick(metalNouns) + " who " + pick(metalVerbs).plural();
-            break;
-        case 14:
-            lyric = "the " + pick(metalAdjectives) + " " + pick(metalNouns).plural() + " for " + pick(metalAdjectives) + " " + pick(metalMisc);
-            break;
-        case 15:
-            lyric = pick(metalNouns).plural() + " " + pick(metalAdjectives) + " " + pick(metalNouns);
-            break;
-        default:
-            lyric = pick(metalVerbs).ing() + " " + pick(metalAdjectives) + " " + pick(metalAdjectives) + " " + pick(metalNouns).plural();
-            break;
-    }
-    return lyric;
+    /* YES- we want to generate this array each time we create a lyric.
+     * We want a bounty of lyrics to choose from. */
+    lyricStructures = [
+        pick(metalVerbs).ing() + " " + pick(metalNouns) + " that " + pick(metalVerbs).plural(),
+        pick(metalAdjectives) + " " + pick(metalNouns).plural() + " that " + pick(metalVerbs) + " the " + pick(metalNouns),
+        pick(metalNouns).plural() + " become " + pick(metalAdjectives) + " in " + pick(metalMisc),
+        pick(metalNouns).plural() + " " + pick(metalVerbs).ing() + " " + pick(metalNouns).plural(),
+        pick(metalVerbs).ing() + " the " + pick(metalNouns),
+        "the " + pick(metalMiscPrefixes) + " " + pick(metalMisc) + " will " + pick(metalVerbs) + " a " + pick(metalNouns),
+        pick(metalAdjectives) + " " + pick(metalNouns) + " " + pick(metalVerbs).plural(),
+        "the " + pick(metalAdjectives) + " " + pick(metalNouns) + " that "  +  pick(metalVerbs).plural(),
+        "my " + pick(metalNouns) + " will " + pick(metalVerbs),
+        pick(metalAdjectives) + " " + pick(metalNouns).plural() + " will " + pick(metalVerbs) + " " + pick(metalNouns).plural(),
+        pick(metalNouns) + " " + pick(metalVerbs).plural(),
+        "the " + pick(metalNouns) + " will " + pick(metalVerbs) + " the " + pick(metalNouns),
+        "the " + pick(metalMiscPrefixes) + " " + pick(metalNouns).plural() + " " + pick(metalVerbs),
+        "the " + pick(metalAdjectives) + " " + pick(metalNouns).plural() + " for " + pick(metalAdjectives) + " " + pick(metalMisc),
+        pick(metalNouns).plural() + " " + pick(metalVerbs) + " the " + pick(metalAdjectives) + " " + pick(metalNouns).plural(),
+        pick(metalAdjectives) + " " + pick(metalAdjectives) + " " + pick(metalVerbs).ing(),
+        pick(metalVerbs),
+        pick(metalVerbs).ing(),
+        pick(metalAdjectives),
+    ];
+    return pick(lyricStructures);
 }
 
 /** Will pick a random element from
